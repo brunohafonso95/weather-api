@@ -1,0 +1,75 @@
+{
+  "env": {
+    "es2020": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "import-helpers"],
+  "rules": {
+    "arrow-body-style": "off",
+    "function-paren-newline": "off",
+    "complexity": ["warn", 5],
+    "max-statements": ["warn", { "max": 10 }],
+    "max-statements-per-line": ["warn", { "max": 1 }],
+    "max-nested-callbacks": ["warn", { "max": 2 }],
+    "max-depth": ["warn", { "max": 2 }],
+    "max-params": ["warn", 3],
+    "max-len": ["warn", 80, { "ignoreUrls": true, "ignoreComments": true }],
+    "no-param-reassign": [
+      "warn",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "acc",
+          "accumulator",
+          "item",
+          "e",
+          "module",
+          "req",
+          "request",
+          "res",
+          "response",
+          "session"
+        ]
+      }
+    ],
+    "no-useless-constructor": "off",
+    "class-methods-use-this": "off",
+    "camelcase": [
+      "error",
+      { "allow": ["created_at", "updated_at", "provider_id", "user_id"] }
+    ],
+    "prettier/prettier": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": ["module", "/^@src/", "/^@tests/", ["parent", "sibling", "index"]],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}
