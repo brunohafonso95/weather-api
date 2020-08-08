@@ -1,0 +1,70 @@
+{
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "api to discovery the best beach to surf based in the hour and the weather.",
+  "main": "src/index.ts",
+  "repository": "https://github.com/brunohafonso95/weath-api.git",
+  "author": "Bruno Afonso <brunohafonso@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "commit": "git-cz",
+    "lint": "eslint ./src/ ./__tests__ --ext .ts",
+    "lint:fix": "eslint ./src/ ./__tests__ --ext .ts --fix",
+    "build": "tsc",
+    "start": "yarn build && node dist/src/index.js",
+    "start:dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
+    "test:e2e": "jest --projects ./__tests__ --runInBand"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.3",
+    "@commitlint/config-conventional": "^8.3.3",
+    "@types/express": "^4.17.7",
+    "@types/jest": "^26.0.9",
+    "@types/module-alias": "^2.0.0",
+    "@types/node": "^14.0.27",
+    "@types/supertest": "^2.0.10",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "cz-conventional-changelog": "3.2.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-import-helpers": "^1.1.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "husky": "^4.2.5",
+    "jest": "^26.2.2",
+    "jest-html-reporters": "^2.0.2",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "supertest": "^4.0.2",
+    "ts-jest": "^26.1.4",
+    "ts-node-dev": "^1.0.0-pre.56",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@overnightjs/core": "^1.7.4",
+    "express": "^4.17.1",
+    "module-alias": "^2.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix -f html -o lint.html",
+      "jest --findRelatedTests",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
