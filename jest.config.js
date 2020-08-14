@@ -4,12 +4,16 @@ const rootDir = resolve(__dirname);
 
 module.exports = {
   rootDir,
-  displayName: "root-tests",
+  displayName: 'root-tests',
   clearMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: ['./src'],
+  collectCoverageFrom: ['./src/**'],
   coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
+  coveragePathIgnorePatterns: [
+    '\\\\node_modules\\\\',
+    'src/index.ts',
+    '__tests__',
+  ],
   coverageProvider: 'v8',
   preset: 'ts-jest',
   reporters: [
