@@ -1,6 +1,9 @@
 describe('Beach Forecast Functional tests', () => {
   it('should return a forecast with just a few times', async () => {
-    const { body, status } = await global.testRequest.get('/api/v1/forecast');
+    const { body, status } = await global.testRequest
+      .get('/api/v1/forecast')
+      .query({ lat: 1 })
+      .query({ lng: 2 });
     expect(status).toBe(200);
     expect(body).toEqual([
       {
