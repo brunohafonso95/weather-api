@@ -19,13 +19,22 @@
   "rules": {
     "arrow-body-style": "off",
     "function-paren-newline": "off",
+    "max-classes-per-file": "off",
     "complexity": ["warn", 5],
     "max-statements": ["warn", { "max": 10 }],
     "max-statements-per-line": ["warn", { "max": 1 }],
     "max-nested-callbacks": ["warn", { "max": 2 }],
     "max-depth": ["warn", { "max": 2 }],
     "max-params": ["warn", 3],
-    "max-len": ["warn", 80, { "ignoreUrls": true, "ignoreComments": true }],
+    "max-len": [
+      "warn",
+      80,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": true,
+        "ignoreStrings": true
+      }
+    ],
     "no-param-reassign": [
       "warn",
       {
@@ -46,10 +55,7 @@
     ],
     "no-useless-constructor": "off",
     "class-methods-use-this": "off",
-    "camelcase": [
-      "error",
-      { "allow": ["created_at", "updated_at", "provider_id", "user_id"] }
-    ],
+    "camelcase": ["error", { "allow": [] }],
     "prettier/prettier": "error",
     "import/extensions": [
       "error",
@@ -62,7 +68,12 @@
       "warn",
       {
         "newlinesBetween": "always",
-        "groups": ["module", "/^@src/", "/^@tests/", ["parent", "sibling", "index"]],
+        "groups": [
+          "module",
+          "/^@src/",
+          "/^@tests/",
+          ["parent", "sibling", "index"]
+        ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
