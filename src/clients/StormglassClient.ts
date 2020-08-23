@@ -3,7 +3,7 @@ import config from 'config';
 import InternalError from '@src/util/errors/internal-error';
 import HttpRequest from '@src/util/Request';
 
-import IStormglassConfig from './IStormglassConfig';
+import IStormglassConfig from '../interfaces/IStormglassConfig';
 
 export interface StormglassForecastPointSource {
   [key: string]: number;

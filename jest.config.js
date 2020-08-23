@@ -23,7 +23,7 @@ module.exports = {
       {
         pageTitle: 'Weather API',
         publicPath: './html-report',
-        filename: 'report.html',
+        filename: 'unit.html',
         expand: true,
       },
     ],

@@ -1,6 +1,12 @@
-import App from './App';
+import config from 'config';
 
-const app = new App().init();
-app.getApp().listen(app.getPort(), () => {
-  console.log('server listening');
-});
+import App from './App';
+import IApplicationConfig from './interfaces/IAplicationConfig';
+
+const applicationConfig: IApplicationConfig = config.get('App');
+
+(async () => {
+  const app = new App(applicationConfig.port);
+  await app.init();
+  app.start();
+})();
