@@ -1,9 +1,16 @@
 {
   "App": {
+    "port": 3333,
+    "auth": {
+      "secret": "no-hard-code"
+    },
+    "database": {
+      "mongoUrl": "mongodb://localhost:27017/surf-forecast"
+    },
     "resources": {
       "Stormglass": {
         "apiUrl": "https://api.stormglass.io/v2",
-        "apiToken": "do-not-hard-code"
+        "apiToken": "no-hard-code"
       }
     }
   }

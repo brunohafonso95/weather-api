@@ -1,0 +1,18 @@
+{
+  "App": {
+    "port": "PORT",
+    "auth": {
+      "secret": "APP_SECRET",
+      "expiresIn": "SESSION_TIME"
+    },
+    "database": {
+      "mongoUrl": "MONGO_URI"
+    },
+    "resources": {
+      "Stormglass": {
+        "apiUrl": "STORMGLASS_URI",
+        "apiToken": "STORMGLASS_TOKEN"
+      }
+    }
+  }
+}
