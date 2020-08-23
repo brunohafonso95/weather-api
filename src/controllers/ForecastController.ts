@@ -1,21 +1,32 @@
-import { Controller, Get } from '@overnightjs/core';
+import { Controller, Get, ClassMiddleware } from '@overnightjs/core';
 import { Request, Response } from 'express';
+import httpStatus from 'http-status';
 
-import StormglassClient from '@src/clients/StormglassClient';
+import authMiddleware from '@src/middlewares/authMiddleware';
+import BeachModel from '@src/models/Beach';
+import ForecastService from '@src/services/ForecastService';
+
+const forecastService = new ForecastService();
 
 @Controller('api/v1/forecast')
+@ClassMiddleware(authMiddleware)
 export default class ForecastController {
   @Get('')
   public async getForecastForLoggedUser(
     req: Request,
     res: Response,
   ): Promise<void> {
-    const { lat = 1, lng = 2 } = req.query;
-    const stormglassClient = new StormglassClient();
-    const forecastResponse = await stormglassClient.fetchPoints(
-      Number(lat),
-      Number(lng),
-    );
-    res.json(forecastResponse);
+    try {
+      const beaches = await BeachModel.find({ user: req.decoded?.id });
+      const forecastData = await forecastService.processForecastForBeaches(
+        beaches,
+      );
+
+      res.json(forecastData);
+    } catch (error) {
+      res
+        .status(httpStatus.INTERNAL_SERVER_ERROR)
+        .json({ message: 'Internal Server Error' });
+    }
   }
 }

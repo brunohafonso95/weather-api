@@ -8,7 +8,7 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   collectCoverageFrom: ['./src/**'],
-  coverageDirectory: 'coverage',
+  coverageDirectory: 'coverage/unit',
   coveragePathIgnorePatterns: [
     '\\\\node_modules\\\\',
     'src/index.ts',
@@ -23,7 +23,7 @@ module.exports = {
       {
         pageTitle: 'Weather API',
         publicPath: './html-report',
-        filename: 'report.html',
+        filename: 'unit.html',
         expand: true,
       },
     ],

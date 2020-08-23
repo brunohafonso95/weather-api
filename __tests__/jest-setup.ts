@@ -2,7 +2,14 @@ import superTest from 'supertest';
 
 import App from '@src/App';
 
-beforeAll(() => {
-  const app = new App().init().getApp();
-  global.testRequest = superTest(app);
+let app: App;
+
+beforeAll(async () => {
+  app = new App();
+  await app.init();
+  global.testRequest = superTest(app.getApp());
+});
+
+afterAll(async () => {
+  await app.closeApplication();
 });

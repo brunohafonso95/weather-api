@@ -17,6 +17,8 @@
   },
   "plugins": ["@typescript-eslint", "prettier", "import-helpers"],
   "rules": {
+    "no-use-before-define": ["error", { "functions": false }],
+    "func-names": "off",
     "arrow-body-style": "off",
     "function-paren-newline": "off",
     "max-classes-per-file": "off",
@@ -26,6 +28,7 @@
     "max-nested-callbacks": ["warn", { "max": 2 }],
     "max-depth": ["warn", { "max": 2 }],
     "max-params": ["warn", 3],
+    "no-underscore-dangle": ["error", { "allow": ["__v", "_id"] }],
     "max-len": [
       "warn",
       80,
@@ -49,7 +52,8 @@
           "request",
           "res",
           "response",
-          "session"
+          "session",
+          "ret"
         ]
       }
     ],
