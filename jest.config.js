@@ -8,7 +8,7 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   collectCoverageFrom: ['./src/**'],
-  coverageDirectory: 'coverage',
+  coverageDirectory: 'coverage/unit',
   coveragePathIgnorePatterns: [
     '\\\\node_modules\\\\',
     'src/index.ts',

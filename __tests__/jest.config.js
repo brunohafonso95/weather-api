@@ -5,6 +5,7 @@ const rootConfig = require(`${rootDir}/jest.config.js`);
 
 module.exports = {
   ...rootConfig,
+  coverageDirectory: 'coverage/functional',
   rootDir,
   displayName: 'e2e-tests',
   setupFilesAfterEnv: ["<rootDir>/__tests__/jest-setup.ts"],

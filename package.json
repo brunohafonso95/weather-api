@@ -73,7 +73,8 @@
   "lint-staged": {
     "*.ts": [
       "eslint --fix -f html -o lint.html",
-      "jest --findRelatedTests",
+      "dotenv -e .env -- jest --projects ./__tests__ --findRelatedTests",
+      "dotenv -e .env -- jest --findRelatedTests",
       "git add"
     ]
   },
