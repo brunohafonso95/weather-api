@@ -2,7 +2,8 @@
   "App": {
     "port": 3333,
     "auth": {
-      "secret": "no-hard-code"
+      "secret": "no-hard-code",
+      "expiresIn": "1d"
     },
     "database": {
       "mongoUrl": "mongodb://localhost:27017/surf-forecast"
