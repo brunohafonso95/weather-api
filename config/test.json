@@ -3,6 +3,9 @@
     "logger": {
       "enabled": false
     },
+    "database": {
+      "mongoUrl": "mongodb://localhost:27017/surf-forecast-test"
+    },
     "resources": {
       "Stormglass": {
         "apiToken": "test-token"
