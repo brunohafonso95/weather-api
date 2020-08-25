@@ -63,6 +63,7 @@ jobs:
       - name: check for new release
         if: steps.semantic.outputs.new-release-published != 'true'
         run: |
+          echo steps.semantic.outputs.new-release-published
           throw "there's no new release version."
 
   deploy:
