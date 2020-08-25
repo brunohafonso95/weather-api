@@ -1,4 +1,4 @@
-name: Complete Workflow
+name: Deployment Workflow
 
 on:
   push:
@@ -27,3 +27,13 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Run all tests
         run: yarn test
+      - shell: bash
+        name: Create ssh deployment key
+        env:
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: ./scripts/deploy.sh
+      - name: Deploy to Umbler
+        run: git remote add umbler ssh://git@geonosis.deploy.umbler.com:9922/kqxzqqge/brunohafonsoweatherforecastservice-com.git && git push umbler master
+        env:
+          CI: true
+
