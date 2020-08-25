@@ -47,6 +47,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
       - name: Generate new release
         uses: codfish/semantic-release-action@master
         env:
