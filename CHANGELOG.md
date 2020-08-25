@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/brunohafonso95/weather-api/compare/v1.2.0...v1.3.0) (2020-08-25)
+
+
+### :sparkles: New Features
+
+* new test of flag ([1033d51](https://github.com/brunohafonso95/weather-api/commit/1033d5111785347e1e581455bdc71a7b2b92c37c))
+
 ## [1.2.0](https://github.com/brunohafonso95/weather-api/compare/v1.1.0...v1.2.0) (2020-08-25)
 
 
