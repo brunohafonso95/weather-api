@@ -56,15 +56,15 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Generate new release
+        id: semantic-release
         uses: codfish/semantic-release-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: check for new release
-        if: steps.semantic.outputs.new-release-published != true
+        if: steps.semantic-release.outputs.new-release-published != true
         run: |
-          echo ${{ steps.semantic.outputs.new-release-published }}
-          throw "there's no new release version."
+          echo "::error ::there's no new release version."
 
   deploy:
     needs: release
