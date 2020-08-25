@@ -64,7 +64,7 @@ jobs:
       - name: check for new release
         if: steps.semantic-release.outputs.new-release-published == false
         run: |
-          echo "::error ::there's no new release version."
+          echo "::error ::There's no new release version."
           exit 1
 
   deploy:
