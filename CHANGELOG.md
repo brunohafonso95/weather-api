@@ -48,11 +48,9 @@
 
 * add the process to deploy to umbler ([4fa6da3](https://github.com/brunohafonso95/weather-api/commit/4fa6da3c9cf619308c1e187565d2e0b0412c23eb))
 * add the semantic release config ([5740463](https://github.com/brunohafonso95/weather-api/commit/57404631fc6a7bddec6b416e57068062d4e189da))
-* adjust on github workflow file to use the correct ngodb action ([650c3dd](https://github.com/brunohafonso95/weather-api/commit/650c3ddffa0b184887d41824dcf56beb04a11447))
+* adjust on github workflow file to use the correct mongodb action ([650c3dd](https://github.com/brunohafonso95/weather-api/commit/650c3ddffa0b184887d41824dcf56beb04a11447))
 * create the github workflow to run all the tests ([a1c7e4d](https://github.com/brunohafonso95/weather-api/commit/a1c7e4d4198d166952f70c0d345800e22d42d1c1))
 * fix the permission o deploy script ([83a2af8](https://github.com/brunohafonso95/weather-api/commit/83a2af8fc8fdb7d2b0feb33ac91d4a13c902ca94))
-* fix the permission o deploy script ([71a823b](https://github.com/brunohafonso95/weather-api/commit/71a823b46bbd0048c4fa4b00a70cb79cc6d3fa9b))
 * fix the repository url on semantic release config ([6b8fb3f](https://github.com/brunohafonso95/weather-api/commit/6b8fb3f52092d009bc3bc0484eff03067e34fd4b))
 * fix the stages of github workflow ([37fb4fc](https://github.com/brunohafonso95/weather-api/commit/37fb4fc172118f73f539c330b8c8f794b92ab669))
-* fix the stages of github workflow ([c4a4354](https://github.com/brunohafonso95/weather-api/commit/c4a43543d3b5d359eb01b7be464d2bd474df1c44))
 * update the github workflow to use semantic release ([084343b](https://github.com/brunohafonso95/weather-api/commit/084343b021cd1364af1ab205a341f2ad9fb0bec6))
