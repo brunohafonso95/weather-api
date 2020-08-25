@@ -1,6 +1,7 @@
 {
   "App": {
     "port": "PORT",
+    "env": "NODE_ENV",
     "auth": {
       "secret": "APP_SECRET",
       "expiresIn": "SESSION_TIME"

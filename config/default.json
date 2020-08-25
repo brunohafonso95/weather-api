@@ -1,6 +1,11 @@
 {
   "App": {
     "port": 3333,
+    "env": "development",
+    "logger": {
+      "enabled": true,
+      "level": "info"
+    },
     "auth": {
       "secret": "no-hard-code",
       "expiresIn": "1d"

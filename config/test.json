@@ -1,5 +1,8 @@
 {
   "App": {
+    "logger": {
+      "enabled": false
+    },
     "resources": {
       "Stormglass": {
         "apiToken": "test-token"
