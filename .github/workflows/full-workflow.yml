@@ -56,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: check for new release
-        if: steps.semantic.outputs.new-release-published == 'false'
+        if: steps.semantic.outputs.new-release-published != 'true'
         run: |
           throw "there's no new release version."
 
