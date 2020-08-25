@@ -1,5 +1,6 @@
 import mongoose, { Document, Model } from 'mongoose';
 
+import Logger from '@src/Logger';
 import AuthService from '@src/services/AuthService';
 
 export interface User {
@@ -54,7 +55,7 @@ userSchema.pre<IUserModel>('save', async function (): Promise<void> {
   try {
     this.password = await AuthService.hashPassword(this.password);
   } catch (error) {
-    console.error('error during the process to encrypt the password');
+    Logger.error('error during the process to encrypt the password', error);
   }
 });
 

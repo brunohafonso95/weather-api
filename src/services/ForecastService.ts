@@ -1,4 +1,5 @@
 import StormglassClient, { ForecastPoint } from '@src/clients/StormglassClient';
+import Logger from '@src/Logger';
 import InternalError from '@src/util/errors/internal-error';
 import HttpRequest from '@src/util/Request';
 
@@ -42,6 +43,7 @@ export default class ForecastService {
   ): Promise<TimeForecast[]> {
     const pointsWithCorrectSources: BeachForecast[] = [];
     try {
+      Logger.info(`Preparing the forecast for ${beaches.length} beaches.`);
       const points: ForecastPoint[][] = await Promise.all(
         beaches.map(beach =>
           this.stormglassClient.fetchPoints(beach.lat, beach.lng),
@@ -56,6 +58,7 @@ export default class ForecastService {
 
       return this.mapForecastByTime(pointsWithCorrectSources);
     } catch (error) {
+      Logger.error(error);
       if (HttpRequest.isRequestError(error)) {
         throw new ForecastProcessingInternalError(
           `Error: ${JSON.stringify(error.response.data)} Code: ${

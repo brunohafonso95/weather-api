@@ -4,6 +4,7 @@ import { json, Application } from 'express';
 
 import * as controllers from './controllers';
 import * as database from './database';
+import Logger from './Logger';
 
 export default class App extends Server {
   constructor(private port = 3000) {
@@ -36,7 +37,7 @@ export default class App extends Server {
 
   public start(): void {
     this.app.listen(this.port, () => {
-      console.info(`server listening on port ${this.port}`);
+      Logger.info(`server listening on port ${this.port}`);
     });
   }
 

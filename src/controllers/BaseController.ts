@@ -2,6 +2,7 @@ import { Response } from 'express';
 import httpStatus from 'http-status';
 import mongoose from 'mongoose';
 
+import Logger from '@src/Logger';
 import { CUSTOM_VALIDATION } from '@src/models/User';
 
 export default abstract class BaseController {
@@ -19,6 +20,7 @@ export default abstract class BaseController {
       return;
     }
 
+    Logger.error(error);
     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
       code: httpStatus.INTERNAL_SERVER_ERROR,
       error: 'Internal Server Error',
