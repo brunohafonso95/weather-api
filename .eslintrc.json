@@ -17,6 +17,7 @@
   },
   "plugins": ["@typescript-eslint", "prettier", "import-helpers"],
   "rules": {
+    "no-console":"error",
     "no-use-before-define": ["error", { "functions": false }],
     "func-names": "off",
     "arrow-body-style": "off",
