@@ -1,3 +1,22 @@
+## [1.1.0](https://github.com/brunohafonso95/weather-api/compare/v1.0.0...v1.1.0) (2020-08-25)
+
+
+### :memo: Documentation
+
+* adjust on readme ([c4cfc67](https://github.com/brunohafonso95/weather-api/commit/c4cfc6791b5a290d92965347b32ab9f75ba3ad04))
+* update the changelog ([9434f47](https://github.com/brunohafonso95/weather-api/commit/9434f47679754683a39ac4c4ad79b9ea38c25574))
+
+
+### :repeat: CI
+
+* adjust the assets to the release ([865fec5](https://github.com/brunohafonso95/weather-api/commit/865fec5ce7a463fff2bbf0d6d0b11ed2edb39b51))
+* change the validation of new release ([6d4f1a5](https://github.com/brunohafonso95/weather-api/commit/6d4f1a54941ff321bf9b238e32096e2b454e34bc))
+
+
+### :sparkles: New Features
+
+* add the integration with codecov to publish the reports ([0b9ed1a](https://github.com/brunohafonso95/weather-api/commit/0b9ed1a7cef67f6316aa65301b8f0e8b9c545e73))
+
 ## 1.0.0 (2020-08-25)
 
 
