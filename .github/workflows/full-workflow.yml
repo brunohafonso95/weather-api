@@ -15,18 +15,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow
+
       - name: Use nodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Start mongodb
         uses: supercharge/mongodb-github-action@1.3.0
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
+
       - name: Install dependencies
         run: yarn --frozen-lockfile
+
       - name: Run all tests
         run: yarn test
+
   release:
     needs: build
     runs-on: ubuntu-latest
@@ -36,18 +41,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow
+
       - name: Use nodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Generate new release
       - uses: codfish/semantic-release-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-      - name: docker push version
+
+      - name: check for new release
         if: steps.semantic.outputs.new-release-published == 'false'
         run: |
           throw "there's no new release version."
+
   deploy:
     needs: release
     runs-on: ubuntu-latest
@@ -57,11 +66,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow
+
       - shell: bash
         name: Create ssh deployment key
         env:
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: ./scripts/deploy.sh
+
       - name: Deploy to Umbler
         run: git remote add umbler ssh://git@geonosis.deploy.umbler.com:9922/kqxzqqge/brunohafonsoweatherforecastservice-com.git && git push umbler master
         env:
