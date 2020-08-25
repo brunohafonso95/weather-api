@@ -1,27 +1,8 @@
 ## [1.3.0](https://github.com/brunohafonso95/weather-api/compare/v1.2.0...v1.3.0) (2020-08-25)
 
-
-### :sparkles: New Features
-
-* new test of flag ([1033d51](https://github.com/brunohafonso95/weather-api/commit/1033d5111785347e1e581455bdc71a7b2b92c37c))
-
-## [1.2.0](https://github.com/brunohafonso95/weather-api/compare/v1.1.0...v1.2.0) (2020-08-25)
-
-
 ### :memo: Documentation
 
 * add the tests coverage badge to the readme ([5ddc5dc](https://github.com/brunohafonso95/weather-api/commit/5ddc5dcf61e278860b9f6a3772c4eea2416b3cb4))
-
-
-### :repeat: CI
-
-* ajust on the flag to run the deploy or not on semantic release ([7b5475c](https://github.com/brunohafonso95/weather-api/commit/7b5475c97bb70bd97bf691841e807044210e66a5))
-* fix the sintax for check new release step ([3a4c13a](https://github.com/brunohafonso95/weather-api/commit/3a4c13a9f34516c8e2af39d6493146a9a4a54aa3))
-
-
-### :sparkles: New Features
-
-* test of new workflow on github ([b2f390b](https://github.com/brunohafonso95/weather-api/commit/b2f390b7fccfcf87e7224b53cfd507926a118c59))
 
 ## [1.1.0](https://github.com/brunohafonso95/weather-api/compare/v1.0.0...v1.1.0) (2020-08-25)
 
