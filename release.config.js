@@ -1,5 +1,5 @@
 const assets = [
-  { path: 'src/index.js', label: 'forecast beach weather api' },
+  { path: 'src/index.ts', label: 'forecast beach weather api' },
 ];
 
 const verifyConditions = [
