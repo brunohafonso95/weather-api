@@ -27,6 +27,42 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Run all tests
         run: yarn test
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+
+      - name: Use nodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Generate new release
+        uses: codfish/semantic-release-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: check for new release
+        if: steps.semantic.outputs.new-release-published == 'false'
+        run: |
+          throw "there's no new release version."
+
+  deploy:
+    needs: release
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+
       - shell: bash
         name: Create ssh deployment key
         env:
