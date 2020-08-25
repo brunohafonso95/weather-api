@@ -1,5 +1,5 @@
 const assets = [
-  { path: 'src/index.js', label: 'semantic release complete workflow' },
+  { path: 'src/index.js', label: 'forecast beach weather api' },
 ];
 
 const verifyConditions = [
@@ -146,7 +146,7 @@ const addChannel = [];
 
 module.exports = {
   repositoryUrl:
-    'https://github.com/brunohafonso95/semantic-release-complete-workflow.git',
+    ' https://github.com/brunohafonso95/weather-api.git',
   branches: [
     '+([0-9])?(.{+([0-9]),x}).x',
     'master',
