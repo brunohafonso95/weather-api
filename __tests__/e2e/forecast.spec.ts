@@ -1,4 +1,4 @@
-import httpStatus from 'http-status';
+import httpStatus from 'http-status-codes';
 import nock from 'nock';
 
 import BeachModel from '@src/models/Beach';
@@ -82,6 +82,10 @@ describe('Beach Forecast Functional tests', () => {
       .get('/api/v1/forecast')
       .set('x-access-token', token);
     expect(status).toBe(httpStatus.INTERNAL_SERVER_ERROR);
-    expect(body).toEqual({ message: 'Internal Server Error' });
+    expect(body).toEqual({
+      code: httpStatus.INTERNAL_SERVER_ERROR,
+      error: httpStatus.getStatusText(httpStatus.INTERNAL_SERVER_ERROR),
+      message: 'Something went wrong',
+    });
   });
 });

@@ -1,4 +1,4 @@
-import httpStatus from 'http-status';
+import httpStatus from 'http-status-codes';
 
 import BeachModel from '@src/models/Beach';
 import UserModel from '@src/models/User';
@@ -57,7 +57,8 @@ describe('Beaches functional tests', () => {
       expect(response.status).toBe(httpStatus.UNPROCESSABLE_ENTITY);
       expect(response.body).toEqual({
         code: httpStatus.UNPROCESSABLE_ENTITY,
-        error:
+        error: httpStatus.getStatusText(httpStatus.UNPROCESSABLE_ENTITY),
+        message:
           'Beach validation failed: lat: Cast to Number failed for value "invalid_string" at path "lat"',
       });
     });
@@ -68,6 +69,7 @@ describe('Beaches functional tests', () => {
         .mockImplementationOnce(() =>
           Promise.reject(new Error('fail to create beach')),
         );
+
       const newBeach = {
         lat: 'invalid_string',
         lng: 46.43243,
@@ -82,7 +84,8 @@ describe('Beaches functional tests', () => {
       expect(response.status).toBe(httpStatus.INTERNAL_SERVER_ERROR);
       expect(response.body).toEqual({
         code: httpStatus.INTERNAL_SERVER_ERROR,
-        error: 'Internal Server Error',
+        error: httpStatus.getStatusText(httpStatus.INTERNAL_SERVER_ERROR),
+        message: 'Something went wrong',
       });
     });
   });

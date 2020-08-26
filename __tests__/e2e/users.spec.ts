@@ -1,4 +1,4 @@
-import httpStatus from 'http-status';
+import httpStatus from 'http-status-codes';
 
 import UserModel from '@src/models/User';
 import AuthService from '@src/services/AuthService';
@@ -44,7 +44,8 @@ describe('Users functional tests', () => {
       expect(status).toBe(httpStatus.UNPROCESSABLE_ENTITY);
       expect(body).toEqual({
         code: httpStatus.UNPROCESSABLE_ENTITY,
-        error: 'User validation failed: name: Path `name` is required.',
+        error: httpStatus.getStatusText(httpStatus.UNPROCESSABLE_ENTITY),
+        message: 'User validation failed: name: Path `name` is required.',
       });
     });
 
@@ -64,7 +65,8 @@ describe('Users functional tests', () => {
       expect(status).toBe(httpStatus.CONFLICT);
       expect(body).toEqual({
         code: httpStatus.CONFLICT,
-        error:
+        error: httpStatus.getStatusText(httpStatus.CONFLICT),
+        message:
           'User validation failed: email: email already exists on database',
       });
     });
@@ -101,7 +103,8 @@ describe('Users functional tests', () => {
 
       expect(body).toEqual({
         code: httpStatus.UNAUTHORIZED,
-        error: 'User Not Found',
+        error: httpStatus.getStatusText(httpStatus.UNAUTHORIZED),
+        message: 'User Not Found',
       });
     });
 
@@ -119,7 +122,8 @@ describe('Users functional tests', () => {
 
       expect(body).toEqual({
         code: httpStatus.UNAUTHORIZED,
-        error: 'The user/password is wrong',
+        error: httpStatus.getStatusText(httpStatus.UNAUTHORIZED),
+        message: 'The user/password is wrong',
       });
     });
   });

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import StormglassClient from '@src/clients/StormglassClient';
 import HttpRequest, { Response as HttpResponse } from '@src/util/Request';
 

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import httpStatus from 'http-status';
+import httpStatus from 'http-status-codes';
 
 import AuthService from '@src/services/AuthService';
 

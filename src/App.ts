@@ -1,6 +1,9 @@
 import './util/module-alias';
 import { Server } from '@overnightjs/core';
+import cors from 'cors';
 import { json, Application } from 'express';
+import expressPino from 'express-pino-logger';
+import helmet from 'helmet';
 
 import * as controllers from './controllers';
 import * as database from './database';
@@ -24,6 +27,13 @@ export default class App extends Server {
 
   private globalMiddlewares(): App {
     this.app.use(json());
+    this.app.use(cors());
+    this.app.use(helmet());
+    this.app.use(
+      expressPino({
+        logger: Logger,
+      }),
+    );
     return this;
   }
 
