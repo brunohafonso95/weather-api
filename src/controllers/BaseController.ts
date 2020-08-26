@@ -1,9 +1,10 @@
 import { Response } from 'express';
-import httpStatus from 'http-status';
+import httpStatus from 'http-status-codes';
 import mongoose from 'mongoose';
 
 import Logger from '@src/Logger';
 import { CUSTOM_VALIDATION } from '@src/models/User';
+import ApiError, { IApiError } from '@src/util/errors/api-error';
 
 export default abstract class BaseController {
   protected sendCreateUpdateErrorResponse(
@@ -12,19 +13,27 @@ export default abstract class BaseController {
   ): void {
     if (error instanceof mongoose.Error.ValidationError) {
       const { code, error: err } = this.handleClientErrors(error);
-      res.status(code).json({
-        code,
-        error: err,
-      });
+      res.status(code).json(
+        ApiError.format({
+          code,
+          message: err,
+        }),
+      );
 
       return;
     }
 
     Logger.error(error);
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-      code: httpStatus.INTERNAL_SERVER_ERROR,
-      error: 'Internal Server Error',
-    });
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json(
+      ApiError.format({
+        code: httpStatus.INTERNAL_SERVER_ERROR,
+        message: 'Something went wrong',
+      }),
+    );
+  }
+
+  protected sendErrorResponse(res: Response, error: IApiError): Response {
+    return res.status(error.code).json(ApiError.format(error));
   }
 
   private handleClientErrors(

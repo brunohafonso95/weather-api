@@ -1,6 +1,6 @@
 import { Controller, Post, ClassMiddleware } from '@overnightjs/core';
 import { Request, Response } from 'express';
-import httpStatus from 'http-status';
+import httpStatus from 'http-status-codes';
 
 import authMiddleware from '@src/middlewares/authMiddleware';
 import BeachModel from '@src/models/Beach';

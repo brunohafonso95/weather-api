@@ -1,6 +1,6 @@
 import { Controller, Post } from '@overnightjs/core';
 import { Request, Response } from 'express';
-import httpStatus from 'http-status';
+import httpStatus from 'http-status-codes';
 
 import UserModel from '@src/models/User';
 import AuthService from '@src/services/AuthService';
@@ -25,15 +25,16 @@ export default class UsersController extends BaseController {
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email });
     if (!user) {
-      return res
-        .status(httpStatus.UNAUTHORIZED)
-        .json({ code: httpStatus.UNAUTHORIZED, error: 'User Not Found' });
+      return this.sendErrorResponse(res, {
+        code: httpStatus.UNAUTHORIZED,
+        message: 'User Not Found',
+      });
     }
 
     if (!(await AuthService.compareHash(password, user.password))) {
-      return res.status(httpStatus.UNAUTHORIZED).json({
+      return this.sendErrorResponse(res, {
         code: httpStatus.UNAUTHORIZED,
-        error: 'The user/password is wrong',
+        message: 'The user/password is wrong',
       });
     }
 
