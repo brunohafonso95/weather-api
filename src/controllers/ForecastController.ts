@@ -25,7 +25,10 @@ export default class ForecastController extends BaseController {
         beaches,
       );
 
-      res.json(forecastData);
+      this.sendDefaulResponse(res, {
+        code: httpStatus.OK,
+        payload: forecastData,
+      });
     } catch (error) {
       Logger.error(error);
       this.sendErrorResponse(res, {

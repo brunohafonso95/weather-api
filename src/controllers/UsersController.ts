@@ -14,7 +14,10 @@ export default class UsersController extends BaseController {
     try {
       const newUser = new UserModel(req.body);
       await newUser.save();
-      res.status(httpStatus.CREATED).json(newUser);
+      this.sendDefaulResponse(res, {
+        code: httpStatus.CREATED,
+        payload: newUser,
+      });
     } catch (error) {
       this.sendCreateUpdateErrorResponse(res, error);
     }
@@ -44,6 +47,9 @@ export default class UsersController extends BaseController {
       email: user.email,
     });
 
-    return res.json({ id: user.id, name: user.name, email: user.email, token });
+    return this.sendDefaulResponse(res, {
+      code: httpStatus.OK,
+      payload: { id: user.id, name: user.name, email: user.email, token },
+    });
   }
 }

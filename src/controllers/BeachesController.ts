@@ -15,7 +15,10 @@ export default class BeachesController extends BaseController {
     try {
       const beach = new BeachModel({ ...req.body, user: req.decoded.id });
       const result = await beach.save();
-      res.status(httpStatus.CREATED).json(result);
+      this.sendDefaulResponse(res, {
+        code: httpStatus.CREATED,
+        payload: result,
+      });
     } catch (error) {
       this.sendCreateUpdateErrorResponse(res, error);
     }
