@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 1.3.0
+  version: 1.0.0
   title: Surf Forecast
   description: Surf Forecast API
   termsOfService: 'https://github.com/brunohafonso95/weather-api/blob/master/README.md'
