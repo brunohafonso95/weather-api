@@ -1,3 +1,15 @@
+### [1.5.2](https://github.com/brunohafonso95/weather-api/compare/v1.5.1...v1.5.2) (2020-09-02)
+
+
+### :bug: Fixes
+
+* add the .js extension to openapi configuration ([f0bcecb](https://github.com/brunohafonso95/weather-api/commit/f0bcecbe13bd3808d52c6c181217c3122f4775cb))
+
+
+### :memo: Documentation
+
+* change the version of API on swagger docs ([d8c81fe](https://github.com/brunohafonso95/weather-api/commit/d8c81fe2255cd92117813fe82adcee57898582a6))
+
 ### [1.5.1](https://github.com/brunohafonso95/weather-api/compare/v1.5.0...v1.5.1) (2020-09-02)
 
 
