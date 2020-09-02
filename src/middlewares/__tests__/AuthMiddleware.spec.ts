@@ -41,7 +41,8 @@ describe('Auth Middleware unit test', () => {
     expect(resFake.status).toHaveBeenCalledWith(httpStatus.UNAUTHORIZED);
     expect(jsonMock).toHaveBeenCalledWith({
       code: httpStatus.UNAUTHORIZED,
-      error: 'jwt malformed',
+      error: httpStatus.getStatusText(httpStatus.UNAUTHORIZED),
+      message: 'jwt malformed',
     });
   });
 
@@ -65,7 +66,8 @@ describe('Auth Middleware unit test', () => {
     expect(resFake.status).toHaveBeenCalledWith(httpStatus.UNAUTHORIZED);
     expect(jsonMock).toHaveBeenCalledWith({
       code: httpStatus.UNAUTHORIZED,
-      error: 'jwt token not provided',
+      error: httpStatus.getStatusText(httpStatus.UNAUTHORIZED),
+      message: 'jwt token not provided',
     });
   });
 });

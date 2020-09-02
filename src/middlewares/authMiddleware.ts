@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status-codes';
 
 import AuthService from '@src/services/AuthService';
+import ApiError from '@src/util/errors/api-error';
 
 export default function (
   req: Partial<Request>,
@@ -10,10 +11,12 @@ export default function (
 ): void {
   const token = req.headers?.['x-access-token'];
   if (!token) {
-    res.status?.(httpStatus.UNAUTHORIZED).json({
-      code: httpStatus.UNAUTHORIZED,
-      error: 'jwt token not provided',
-    });
+    res.status?.(httpStatus.UNAUTHORIZED).json(
+      ApiError.format({
+        code: httpStatus.UNAUTHORIZED,
+        message: 'jwt token not provided',
+      }),
+    );
     return;
   }
 
@@ -22,13 +25,11 @@ export default function (
     req.decoded = decoded;
     next();
   } catch (error) {
-    res.status?.(httpStatus.UNAUTHORIZED).json({
-      code: httpStatus.UNAUTHORIZED,
-      error: error.message,
-    });
+    res.status?.(httpStatus.UNAUTHORIZED).json(
+      ApiError.format({
+        code: httpStatus.UNAUTHORIZED,
+        message: error.message,
+      }),
+    );
   }
-
-  // if() {
-
-  // }
 }
