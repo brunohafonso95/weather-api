@@ -13,6 +13,9 @@ module.exports = {
     '\\\\node_modules\\\\',
     'src/index.ts',
     '__tests__',
+    'src/@types',
+    'src/interfaces',
+    'src/api.schema.json'
   ],
   coverageProvider: 'v8',
   preset: 'ts-jest',

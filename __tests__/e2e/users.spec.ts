@@ -24,15 +24,16 @@ describe('Users functional tests', () => {
         .post('/api/v1/users')
         .send(user);
       expect(status).toBe(httpStatus.CREATED);
+      const newUser = await UserModel.findOne({ email: user.email });
       await expect(
-        AuthService.compareHash(user.password, body.password),
+        AuthService.compareHash(user.password, newUser?.password as string),
       ).resolves.toBeTruthy();
       expect(body).toEqual(
-        expect.objectContaining({ ...user, password: expect.any(String) }),
+        expect.objectContaining({ name: user.name, email: user.email }),
       );
     });
 
-    it('should return 422 when there is an validation error', async () => {
+    it('should return an error when there is an validation error', async () => {
       const user = {
         email: 'john@mail.com',
         password: '1234',
@@ -41,10 +42,10 @@ describe('Users functional tests', () => {
       const { body, status } = await global.testRequest
         .post('/api/v1/users')
         .send(user);
-      expect(status).toBe(httpStatus.UNPROCESSABLE_ENTITY);
+      expect(status).toBe(httpStatus.BAD_REQUEST);
       expect(body).toEqual({
-        code: httpStatus.UNPROCESSABLE_ENTITY,
-        error: httpStatus.getStatusText(httpStatus.UNPROCESSABLE_ENTITY),
+        code: httpStatus.BAD_REQUEST,
+        error: httpStatus.getStatusText(httpStatus.BAD_REQUEST),
         message: 'User validation failed: name: Path `name` is required.',
       });
     });
@@ -125,6 +126,53 @@ describe('Users functional tests', () => {
         error: httpStatus.getStatusText(httpStatus.UNAUTHORIZED),
         message: 'The user/password is wrong',
       });
+    });
+  });
+
+  describe('when getting the user information', () => {
+    it('should return 404 unsing an token of an user that does not exists', async () => {
+      const user = {
+        id: 'fake-id',
+        name: 'John Doe',
+        email: 'john@mail.com',
+        password: '1234',
+      };
+
+      const token = AuthService.generateToken(user);
+      const { body } = await global.testRequest
+        .get('/api/v1/users/me')
+        .set('x-access-token', token);
+
+      expect(body).toEqual({
+        code: httpStatus.NOT_FOUND,
+        error: httpStatus.getStatusText(httpStatus.NOT_FOUND),
+        message: 'User Not Found',
+      });
+    });
+
+    it('should return the user information', async () => {
+      const user = {
+        name: 'John Doe',
+        email: 'john@mail.com',
+        password: '1234',
+      };
+
+      const newUser = await new UserModel(user).save();
+      const token = AuthService.generateToken(newUser.toJSON());
+      const { status, body } = await global.testRequest
+        .get('/api/v1/users/me')
+        .set('x-access-token', token);
+
+      expect(status).toEqual(httpStatus.OK);
+      expect(body).toMatchObject(
+        JSON.parse(
+          JSON.stringify({
+            id: newUser.id,
+            name: newUser.name,
+            email: newUser.email,
+          }),
+        ),
+      );
     });
   });
 });

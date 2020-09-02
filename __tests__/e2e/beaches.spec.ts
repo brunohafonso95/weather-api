@@ -42,10 +42,10 @@ describe('Beaches functional tests', () => {
       expect(response.body).toEqual(expect.objectContaining(newBeach));
     });
 
-    it('should 422 when there is a validation error', async () => {
+    it('should return an error when there is a validation error', async () => {
       const newBeach = {
         lat: 'invalid_string',
-        lng: 46.43243,
+        lng: 'invalid_string',
         name: 'Ubatuba',
         position: 'E',
       };
@@ -54,12 +54,12 @@ describe('Beaches functional tests', () => {
         .post('/api/v1/beaches')
         .set('x-access-token', token)
         .send(newBeach);
-      expect(response.status).toBe(httpStatus.UNPROCESSABLE_ENTITY);
+      expect(response.status).toBe(httpStatus.BAD_REQUEST);
       expect(response.body).toEqual({
-        code: httpStatus.UNPROCESSABLE_ENTITY,
-        error: httpStatus.getStatusText(httpStatus.UNPROCESSABLE_ENTITY),
+        code: httpStatus.BAD_REQUEST,
+        error: httpStatus.getStatusText(httpStatus.BAD_REQUEST),
         message:
-          'Beach validation failed: lat: Cast to Number failed for value "invalid_string" at path "lat"',
+          'request.body.lat should be number, request.body.lng should be number',
       });
     });
 
@@ -71,7 +71,7 @@ describe('Beaches functional tests', () => {
         );
 
       const newBeach = {
-        lat: 'invalid_string',
+        lat: 46.43243,
         lng: 46.43243,
         name: 'Ubatuba',
         position: 'E',
@@ -85,7 +85,7 @@ describe('Beaches functional tests', () => {
       expect(response.body).toEqual({
         code: httpStatus.INTERNAL_SERVER_ERROR,
         error: httpStatus.getStatusText(httpStatus.INTERNAL_SERVER_ERROR),
-        message: 'Something went wrong',
+        message: 'fail to create beach',
       });
     });
   });

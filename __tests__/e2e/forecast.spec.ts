@@ -85,7 +85,8 @@ describe('Beach Forecast Functional tests', () => {
     expect(body).toEqual({
       code: httpStatus.INTERNAL_SERVER_ERROR,
       error: httpStatus.getStatusText(httpStatus.INTERNAL_SERVER_ERROR),
-      message: 'Something went wrong',
+      message:
+        'Unexpected error during the forecast processing: Unexpected error when trying to comunicate with stormglass service: something went wrong',
     });
   });
 });
