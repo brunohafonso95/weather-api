@@ -1,13 +1,13 @@
 import mongoose, { Model, Document } from 'mongoose';
 
-import { BeachPosition } from '@src/services/ForecastService';
+import { Position } from '@src/services/ForecastService';
 
 export interface Beach {
   _id?: string;
   lat: number;
   lng: number;
   name: string;
-  position: BeachPosition;
+  position: Position;
   user: string;
 }
 
