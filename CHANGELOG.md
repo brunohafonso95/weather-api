@@ -1,3 +1,20 @@
+## [1.6.0](https://github.com/brunohafonso95/weather-api/compare/v1.5.3...v1.6.0) (2020-09-02)
+
+
+### :sparkles: New Features
+
+* add rate limit middleware to forecast resource ([f438213](https://github.com/brunohafonso95/weather-api/commit/f438213f474da2da1a6406944ff99a36021f0f62))
+
+
+### :zap: Refactor
+
+* add the limit to a day search data on stormglass api ([1ee76ff](https://github.com/brunohafonso95/weather-api/commit/1ee76ffeebfc65a21e8e2b50240dc39d72391312))
+
+
+### :memo: Documentation
+
+* add the docs of rate limit of forecast resource ([a0d0f7b](https://github.com/brunohafonso95/weather-api/commit/a0d0f7b8372c13ffe7d3f16e9613488f25c22cb1))
+
 ### [1.5.3](https://github.com/brunohafonso95/weather-api/compare/v1.5.2...v1.5.3) (2020-09-02)
 
 
