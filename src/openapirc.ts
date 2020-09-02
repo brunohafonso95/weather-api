@@ -2,7 +2,7 @@ import path from 'path';
 
 export default {
   cwd: path.resolve(__dirname, '..'),
-  extension: ['.ts', '.yaml', '.yml'],
+  extension: ['.ts', '.js', '.yaml', '.yml'],
   include: ['**/**'],
   exclude: [
     'coverage/**',
