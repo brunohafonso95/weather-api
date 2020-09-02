@@ -12,7 +12,7 @@
     "lint": "eslint ./src/ ./__tests__ --ext .ts",
     "lint:fix": "eslint ./src/ ./__tests__ --ext .ts --fix",
     "build": "tsc",
-    "start": "yarn build && node dist/src/index.js",
+    "start": "yarn build && cp src/api.schema.yaml dist/src/api.schema.yaml && node dist/src/index.js",
     "start:dev": "dotenv -e .env -- ts-node-dev --inspect --transpile-only --no-notify --ignore-watch node_modules src/index.ts",
     "test": "yarn lint && yarn test:unit && yarn test:e2e",
     "test:e2e": "dotenv -e .env -- jest --projects ./__tests__ --runInBand",
