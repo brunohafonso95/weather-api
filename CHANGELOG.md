@@ -1,3 +1,10 @@
+### [1.5.1](https://github.com/brunohafonso95/weather-api/compare/v1.5.0...v1.5.1) (2020-09-02)
+
+
+### :bug: Fixes
+
+* add script to copy the openapi specification file to final build ([704be71](https://github.com/brunohafonso95/weather-api/commit/704be71aa5fe214cce4111ed4d33a42b350c79db))
+
 ## [1.5.0](https://github.com/brunohafonso95/weather-api/compare/v1.4.0...v1.5.0) (2020-09-02)
 
 
