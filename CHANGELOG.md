@@ -1,3 +1,10 @@
+### [1.5.3](https://github.com/brunohafonso95/weather-api/compare/v1.5.2...v1.5.3) (2020-09-02)
+
+
+### :bug: Fixes
+
+* disablet the option remove comments to keep the openapi comments ([260adf1](https://github.com/brunohafonso95/weather-api/commit/260adf1431c4f5a1c5cf6936e4ff7289ff5900ab))
+
 ### [1.5.2](https://github.com/brunohafonso95/weather-api/compare/v1.5.1...v1.5.2) (2020-09-02)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "weather-api",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "api to discovery the best beach to surf based in the hour and the weather.",
   "main": "src/index.ts",
   "repository": "https://github.com/brunohafonso95/weath-api.git",
