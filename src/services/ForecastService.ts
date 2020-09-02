@@ -1,9 +1,12 @@
 import StormglassClient, { ForecastPoint } from '@src/clients/StormglassClient';
 import Logger from '@src/Logger';
 import InternalError from '@src/util/errors/internal-error';
+import orderByCustomProp from '@src/util/orderByCustomProp';
 import HttpRequest from '@src/util/Request';
 
-export enum BeachPosition {
+import Rating from './RatingService';
+
+export enum Position {
   E = 'E',
   N = 'N',
   S = 'S',
@@ -14,7 +17,7 @@ export interface Beach {
   lat: number;
   lng: number;
   name: string;
-  position: BeachPosition;
+  position: Position;
   user: string;
 }
 
@@ -36,27 +39,21 @@ export class ForecastProcessingInternalError extends InternalError {
 export default class ForecastService {
   constructor(
     protected stormglassClient: StormglassClient = new StormglassClient(),
+    protected RatingService: typeof Rating = Rating,
   ) {}
 
   public async processForecastForBeaches(
     beaches: Beach[],
   ): Promise<TimeForecast[]> {
-    const pointsWithCorrectSources: BeachForecast[] = [];
     try {
-      Logger.info(`Preparing the forecast for ${beaches.length} beaches.`);
-      const points: ForecastPoint[][] = await Promise.all(
-        beaches.map(beach =>
-          this.stormglassClient.fetchPoints(beach.lat, beach.lng),
+      const beachForecast = await this.calculateRating(beaches);
+      const timeForecast = this.mapForecastByTime(beachForecast);
+      return timeForecast.map(t => ({
+        time: t.time,
+        forecast: t.forecast.sort((curr, next) =>
+          orderByCustomProp<Omit<BeachForecast, '_id'>>(curr, next, 'rating'),
         ),
-      );
-
-      points.forEach((point: ForecastPoint[], index: number) => {
-        pointsWithCorrectSources.push(
-          ...this.getEnrichedBeachesData(point, beaches[index]),
-        );
-      });
-
-      return this.mapForecastByTime(pointsWithCorrectSources);
+      }));
     } catch (error) {
       Logger.error(error);
       if (HttpRequest.isRequestError(error)) {
@@ -71,9 +68,29 @@ export default class ForecastService {
     }
   }
 
+  private async calculateRating(beaches: Beach[]): Promise<BeachForecast[]> {
+    const pointsWithCorrectSources: BeachForecast[] = [];
+    Logger.info(`Preparing the forecast for ${beaches.length} beaches`);
+    const points: ForecastPoint[][] = await Promise.all(
+      beaches.map(beach =>
+        this.stormglassClient.fetchPoints(beach.lat, beach.lng),
+      ),
+    );
+
+    points.forEach((point: ForecastPoint[], index: number) => {
+      const ratingService = new this.RatingService(beaches[index]);
+      pointsWithCorrectSources.push(
+        ...this.getEnrichedBeachesData(point, beaches[index], ratingService),
+      );
+    });
+
+    return pointsWithCorrectSources;
+  }
+
   private getEnrichedBeachesData(
     points: ForecastPoint[],
     beach: Beach,
+    ratingService: Rating,
   ): BeachForecast[] {
     return points.map(point => ({
       ...{
@@ -81,7 +98,7 @@ export default class ForecastService {
         lng: beach.lng,
         name: beach.name,
         position: beach.position,
-        rating: 1,
+        rating: ratingService.getRatingForAPoint(point),
       },
       ...point,
     }));
