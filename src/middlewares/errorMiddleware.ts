@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 import Logger from '@src/Logger';
 import { CUSTOM_VALIDATION } from '@src/models/User';
-import ApiError from '@src/util/errors/api-error';
+import ApiError from '@src/util/errors/ApiError';
 
 export interface HTTPError extends Error {
   status?: number;

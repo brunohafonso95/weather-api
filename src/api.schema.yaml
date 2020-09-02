@@ -275,3 +275,20 @@ components:
         message: Internal Server Error
         code: '500'
         error: Internal Server Error
+    TooManyRequestsError:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: number
+        error:
+          type: string
+        description:
+          type: string
+        documentation:
+          type: string
+      example:
+        message: Too Many Requests
+        code: '429'
+        error: Too Many Requests

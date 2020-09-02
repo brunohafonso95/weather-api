@@ -53,6 +53,7 @@ describe('Beach Forecast Functional tests', () => {
         lng: '151.289824',
         params: /(.*)/,
         source: 'noaa',
+        end: /(.*)/,
       })
       .reply(200, stormGlassWeather3hoursFixture);
     const { body, status } = await global.testRequest
@@ -76,6 +77,7 @@ describe('Beach Forecast Functional tests', () => {
         lng: '151.289824',
         params: /(.*)/,
         source: 'noaa',
+        end: /(.*)/,
       })
       .replyWithError('something went wrong');
     const { body, status } = await global.testRequest

@@ -1,4 +1,4 @@
-import './util/module-alias';
+import './util/moduleAlias';
 import { Server } from '@overnightjs/core';
 import cors from 'cors';
 import { json, Application } from 'express';
@@ -43,11 +43,11 @@ export default class App extends Server {
     this.app.use(json());
     this.app.use(cors());
     this.app.use(helmet());
-    this.app.use(
-      expressPino({
-        logger: Logger,
-      }),
-    );
+    // this.app.use(
+    //   expressPino({
+    //     logger: Logger,
+    //   }),
+    // );
     return this;
   }
 

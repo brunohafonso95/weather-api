@@ -1,7 +1,7 @@
 import { Response } from 'express';
 
 import IDefaultResponse from '@src/interfaces/IDefaultResponse';
-import ApiError, { IApiError } from '@src/util/errors/api-error';
+import ApiError, { IApiError } from '@src/util/errors/ApiError';
 
 export default abstract class BaseController {
   protected sendErrorResponse(res: Response, error: IApiError): Response {

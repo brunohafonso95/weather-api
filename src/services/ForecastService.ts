@@ -1,6 +1,6 @@
 import StormglassClient, { ForecastPoint } from '@src/clients/StormglassClient';
 import Logger from '@src/Logger';
-import InternalError from '@src/util/errors/internal-error';
+import InternalError from '@src/util/errors/InternalError';
 import orderByCustomProp from '@src/util/orderByCustomProp';
 import HttpRequest from '@src/util/Request';
 

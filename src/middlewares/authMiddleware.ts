@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status-codes';
 
 import AuthService from '@src/services/AuthService';
-import ApiError from '@src/util/errors/api-error';
+import ApiError from '@src/util/errors/ApiError';
 
 export default function (
   req: Partial<Request>,
