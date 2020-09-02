@@ -1,3 +1,28 @@
+## [1.5.0](https://github.com/brunohafonso95/weather-api/compare/v1.4.0...v1.5.0) (2020-09-02)
+
+
+### :sparkles: New Features
+
+* add middleware to capture all the errors on application ([14c6940](https://github.com/brunohafonso95/weather-api/commit/14c6940da248e50f056d2054e1fb956692f26aec))
+* create the method to handle default response of controllers ([7e48c93](https://github.com/brunohafonso95/weather-api/commit/7e48c938c49f610b14787daa1f63b42baef4c4a9))
+* implements the rating logic to beaches forecast ([42761a3](https://github.com/brunohafonso95/weather-api/commit/42761a3724a9cc91e7addc24dbb140710cdbe929))
+
+
+### :white_check_mark: Tests
+
+* add tests for beach rating and forecast ordered by rate ([c39a4ab](https://github.com/brunohafonso95/weather-api/commit/c39a4abeb3af9a026d337b6e4b41716ae78c2f24))
+
+
+### :barber: Style
+
+* add rules to prefer-export-default and consistent-return ([c7a5ca0](https://github.com/brunohafonso95/weather-api/commit/c7a5ca0546a9b3f9ce802aced36f2b9861bfa84c))
+
+
+### :memo: Documentation
+
+* add the badge of github workflow [CI SKIP] ([25ed721](https://github.com/brunohafonso95/weather-api/commit/25ed7216fac53b92157b12b33fec61b69111ff18))
+* add the documentation to the project using swagger ([9236fbd](https://github.com/brunohafonso95/weather-api/commit/9236fbd3a9eac6bc0f7f936bd10d616ebc2cb662))
+
 ## [1.4.0](https://github.com/brunohafonso95/weather-api/compare/v1.3.0...v1.4.0) (2020-08-26)
 
 
