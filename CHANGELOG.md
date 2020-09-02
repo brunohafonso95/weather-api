@@ -1,3 +1,33 @@
+## [1.4.0](https://github.com/brunohafonso95/weather-api/compare/v1.3.0...v1.4.0) (2020-08-26)
+
+
+### :memo: Documentation
+
+* adjust on changelog items (removing irrelavant items) ([c1a50fe](https://github.com/brunohafonso95/weather-api/commit/c1a50fe9e21dcce08fa708c07d2cd6edac98d237))
+
+
+### :repeat: CI
+
+* adjust on flag to check new release ([832a81e](https://github.com/brunohafonso95/weather-api/commit/832a81e6f400a8b29e654bb6a1cb2f77baf68308))
+
+
+### :barber: Style
+
+* add the rules to not use console on application ([7a44d11](https://github.com/brunohafonso95/weather-api/commit/7a44d11a21e50df86f3ec39bd445f87b9844be5c))
+* fix the format of files to follow eslint rules ([2784536](https://github.com/brunohafonso95/weather-api/commit/2784536ed4abf9dcd6de860bb808cb164eaa4ed5))
+
+
+### :sparkles: New Features
+
+* add logger to the application ([374c8aa](https://github.com/brunohafonso95/weather-api/commit/374c8aaf04b9e43bc0fcf9f72c913cfac5def6a7))
+* add the default handling to api errors ([d56aba8](https://github.com/brunohafonso95/weather-api/commit/d56aba89a7ac348157ec2e7eb4aeeae13669182f))
+
+
+### :white_check_mark: Tests
+
+* create a mongodb config to use a different database for tests ([20f31d5](https://github.com/brunohafonso95/weather-api/commit/20f31d54a9c9fdfe70612755a07723aac7e04a34))
+* update de test to follow the new format of api response errors ([784b0d0](https://github.com/brunohafonso95/weather-api/commit/784b0d0a4ccb41dacba7f64127e91a8e2101b17a))
+
 ## [1.3.0](https://github.com/brunohafonso95/weather-api/compare/v1.2.0...v1.3.0) (2020-08-25)
 
 ### :memo: Documentation
