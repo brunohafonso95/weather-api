@@ -69,22 +69,17 @@ export default class ForecastService {
   }
 
   private async calculateRating(beaches: Beach[]): Promise<BeachForecast[]> {
-    const pointsWithCorrectSources: BeachForecast[] = [];
     Logger.info(`Preparing the forecast for ${beaches.length} beaches`);
-    const points: ForecastPoint[][] = await Promise.all(
+    const response: ForecastPoint[][] = await Promise.all(
       beaches.map(beach =>
         this.stormglassClient.fetchPoints(beach.lat, beach.lng),
       ),
     );
 
-    points.forEach((point: ForecastPoint[], index: number) => {
+    return response.flatMap((points: ForecastPoint[], index: number) => {
       const ratingService = new this.RatingService(beaches[index]);
-      pointsWithCorrectSources.push(
-        ...this.getEnrichedBeachesData(point, beaches[index], ratingService),
-      );
+      return this.getEnrichedBeachesData(points, beaches[index], ratingService);
     });
-
-    return pointsWithCorrectSources;
   }
 
   private getEnrichedBeachesData(
