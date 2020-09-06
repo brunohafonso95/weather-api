@@ -1,3 +1,10 @@
+### [1.6.1](https://github.com/brunohafonso95/weather-api/compare/v1.6.0...v1.6.1) (2020-09-06)
+
+
+### :zap: Refactor
+
+* adjust on log to fetch points in parallel to make code cleaner ([a003fa5](https://github.com/brunohafonso95/weather-api/commit/a003fa590d28f35b43716054b322fb2e303d84ea))
+
 ## [1.6.0](https://github.com/brunohafonso95/weather-api/compare/v1.5.3...v1.6.0) (2020-09-02)
 
 
